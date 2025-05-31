@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13 CSS Animation Examples</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter font as per instructions */
+            margin: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .animation-section {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .animation-box {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 20px auto;
+            border-radius: 8px; /* Rounded corners */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .description {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        pre {
+            background-color: #eef;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            width: calc(100% - 20px); /* Adjust for padding */
+            text-align: left;
+            margin-bottom: 15px;
+            font-size: 0.85em;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* General styles for typing effect container, specific animation styles moved below */
+        .typing-container {
+            width: 200px;
+            height: 50px;
+            background-color: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            padding: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 20px auto;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .animation-section {
+                width: 95%;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            .animation-box, .gradient-box {
+                width: 80px;
+                height: 80px;
+            }
+            .typing-container {
+                width: 90%;
+                font-size: 1em;
+            }
+            pre {
+                font-size: 0.75em;
+            }
+        }
+
+        /* 1. Simple Fade In/Out */
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        .fade-box {
+            animation: fadeInOut 3s infinite alternate;
+        }
+
+        /* 2. Slide In from Left */
+        @keyframes slideInLeft {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        .slide-box {
+            animation: slideInLeft 1.5s ease-out forwards; /* forwards keeps the final state */
+        }
+
+        /* 3. Pulse Effect */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .pulse-box {
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        /* 4. Rotate 360 Degrees */
+        @keyframes rotate360 {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .rotate-box {
+            animation: rotate360 4s linear infinite;
+        }
+
+        /* 5. Bounce Effect */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+        .bounce-box {
+            animation: bounce 2s infinite;
+        }
+
+        /* 6. Color Change */
+        @keyframes colorChange {
+            0% { background-color: #3498db; }
+            25% { background-color: #e74c3c; }
+            50% { background-color: #2ecc71; }
+            75% { background-color: #f1c40f; }
+            100% { background-color: #3498db; }
+        }
+        .color-box {
+            animation: colorChange 5s infinite;
+        }
+
+        /* 7. Grow/Shrink */
+        @keyframes growShrink {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); border-radius: 50%; } /* Morph to circle */
+            100% { transform: scale(1); border-radius: 8px; } /* Back to square */
+        }
+        .grow-box {
+            animation: growShrink 3s infinite ease-in-out;
+        }
+
+        /* 8. Skew */
+        @keyframes skewEffect {
+            0% { transform: skewX(0deg); }
+            50% { transform: skewX(20deg); }
+            100% { transform: skewX(0deg); }
+        }
+        .skew-box {
+            animation: skewEffect 2.5s infinite alternate;
+        }
+
+        /* 9. Text Typing Effect */
+        .typing-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+            color: #2c3e50;
+            overflow: hidden; /* Ensures the text is hidden until typed */
+            border-right: .15em solid orange; /* The caret */
+            white-space: nowrap; /* Keeps text on a single line */
+            margin: 0 auto; /* Centers the text */
+            letter-spacing: .15em; /* Adjust as needed */
+            animation: typing 3.5s steps(30, end) infinite,
+                       blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+
+        /* 10. Gradient Background Animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-box {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* 11. Shake Effect */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .shake-box {
+            animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) infinite;
+        }
+
+        /* 12. Fade In Up */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-up-box {
+            animation: fadeInUp 1s ease-out forwards;
+            /* To make it appear only once, remove infinite and set forwards */
+        }
+
+        /* 13. Continuous Flip */
+        @keyframes flip {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        .flip-box {
+            animation: flip 4s linear infinite;
+            transform-style: preserve-3d; /* Needed for 3D transforms */
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <h1>13 Cool CSS Animation Examples</h1>
+
+    <div class="animation-section">
+        <h2>1. Simple Fade In/Out</h2>
+        <pre><code>/* CSS for Fade In/Out */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+.fade-box {
+    animation: fadeInOut 3s infinite alternate;
+}</code></pre>
+        <div class="animation-box fade-box">Fade</div>
+        <p class="description">Fades an element in and out smoothly.</p>
+    </div>
+
+    <div class="animation-section">
+        <h2>2. Slide In from Left</h2>
+        <pre><code>/* CSS for Slide In from Left */
+@keyframes slideInLeft {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+.slide-box {
+    animation: slideInLeft 1.5s ease-out forwards;
+}</code></pre>
+        <div class="animation-box slide-box">Slide</div>
+        <p class="description">Slides an element into view from the left.</p>
+    </div>
+
+    <div class="animation-section">
+        <h2>3. Pulse Effect</h2>
+        <pre><code>/* CSS for Pulse Effect */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+.pulse-box {
+    animation: pulse 2s infinite ease-in-out;
+}</code></pre>
+        <div class="animation-box pulse-box">Pulse</div>
+        <p class="description">Makes an element gently grow and shrink, simulating a pulse.</p>
+    </div>
+
+    <div class="animation-section">
+        <h2>4. Rotate 360 Degrees</h2>
+        <pre><code>/* CSS for Rotate 360 Degrees */
+@keyframes rotate360 {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.rotate-box {
+    animation: rotate360 4s linear infinite;
+}</code></pre>
+        <div class="animation-box rotate-box">Rotate</div>
+        <p class="description">Continuously rotates an element around its center.</p>
+    </div>
+
+    <div class="animation-section">
+        <h2>5. Bounce Effect</h2>
+        <pre><code>/* CSS for Bounce Effect */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); }
+    60% { transform: translateY(-15px); }
+}
+.bounce-box {
+    animation: bounce 2s infinite;
+}</code></pre>
+        <div class="animation-box bounce-box">Bounce</div>
+        <p class="description">Simulates a bouncing motion for an element.</p>
+    </div>
+
+    <div class="animation-section">
+        <h2>6. Color Change</h2>
+        <pre><code>/* CSS for Color Change */
+@keyframes colorChange {
+    0% { background-color: #3498db; }
+    25% { background-color: #e74c3c; }
+    50% { background-color: #2ecc71; }
+    75% { background-color: #f1c40f; }
+    100% { background-color: #3498db; }
+}
+.color-box {
+    animation: colorChange 5s infinite;
+}</code></pre>
+        <div class="animation-box color-box">Color</div>
+        <p class="description">Transitions an element's background color through a sequence.</p>
+    </div>
+
+    <div class="animation-section">
+        <h2>7. Grow/Shrink & Morph</h2>
+        <pre><code>/* CSS for Grow/Shrink & Morph */
+@keyframes growShrink {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); border-radius: 50%; }
+    100% { transform: scale(1); border-radius: 8px; }
+}
+.grow-box {
+    animation: growShrink 3s infinite ease-in-out;
+}</code></pre>
+        <div class="animation-box grow-box">Grow</div>
+        <p class="description">Makes an element grow, shrink, and subtly morph its shape.</p>
+    </div>
+
+    <div class="animation-section">
+        <h2>8. Skew Effect</h2>
+        <pre><code>/* CSS for Skew Effect */
+@keyframes skewEffect {
+    0% { transform: skewX(0deg); }
+    50% { transform: skewX(20deg); }
+    100% { transform: skewX(0deg); }
+}
+.skew-box {
+    animation: skewEffect 2.5s infinite alternate;
+}</code></pre>
+        <div class="animation-box skew-box">Skew</div>
+        <p class="description">Tilts an element along the X-axis.</p>
+    </div>
+
+    <div class="animation-section">
+        <h2>9. Text Typing Effect</h2>
+        <pre><code>/* CSS for Text Typing Effect */
+.typing-text {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    color: #2c3e50;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: typing 3.5s steps(30, end) infinite,
+               blink-caret .75s step-end infinite;
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+}</code></pre>
+        <div class="typing-container">
+            <span class="typing-text">Hello, World!</span>
+        </div>
+        <p class="description">Creates a classic typewriter effect for text.</p>
+    </div>
+
+    <div class="animation-section">
+        <h2>10. Gradient Background Animation</h2>
+        <pre><code>/* CSS for Gradient Background Animation */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.gradient-box {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+}</code></pre>
+        <div class="gradient-box">Gradient</div>
+        <p class="description">Animates a multi-color gradient background.</p>
+    </div>
+
+    <div class="animation-section">
+        <h2>11. Shake Effect</h2>
+        <pre><code>/* CSS for Shake Effect */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+.shake-box {
+    animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) infinite;
+}</code></pre>
+        <div class="animation-box shake-box">Shake</div>
+        <p class="description">Applies a subtle horizontal shaking motion.</p>
+    </div>
+
+    <div class="animation-section">
+        <h2>12. Fade In Up</h2>
+        <pre><code>/* CSS for Fade In Up */
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up-box {
+    animation: fadeInUp 1s ease-out forwards;
+}</code></pre>
+        <div class="animation-box fade-in-up-box">Appear</div>
+        <p class="description">Fades an element in while moving it slightly upwards.</p>
+    </div>
+
+    <div class="animation-section">
+        <h2>13. Continuous Flip</h2>
+        <pre><code>/* CSS for Continuous Flip */
+@keyframes flip {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+.flip-box {
+    animation: flip 4s linear infinite;
+    transform-style: preserve-3d;
+}</code></pre>
+        <div class="animation-box flip-box">Flip</div>
+        <p class="description">Rotates an element continuously on its Y-axis, creating a flip effect.</p>
+    </div>
+
+</body>
+</html>

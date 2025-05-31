@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Simple CSS Examples</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f4f8; /* Slightly different background */
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: #1a5276; /* Darker blue */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2, h3, h4 {
+            color: #2874a6; /* Medium blue */
+        }
+        details {
+            background-color: #fdfefe;
+            border: 1px solid: #d6eaf8; /* Lighter blue border */
+            border-radius: 6px;
+            margin-bottom: 15px;
+            padding: 12px 18px;
+        }
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #1f618d; /* Stronger blue for summary */
+        }
+        summary:hover {
+            color: #5dade2; /* Lighter blue on hover */
+        }
+        pre {
+            background-color: #2c3e50; /* Midnight blue for code */
+            color: #ecf0f1; /* Clouds (light gray) for code text */
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.95em;
+            border: 1px solid #34495e; /* Wet asphalt border */
+        }
+        code.language-html, code.language-css {
+            white-space: pre-wrap;
+        }
+        .example-preview {
+            border: 1px dashed #aed6f1; /* Light blue dashed border */
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+            background-color: #f8f9f9;
+        }
+        .example-preview p, .example-preview div, .example-preview ul, .example-preview li, .example-preview button {
+            margin: 5px 0; /* Reset margins for isolated examples */
+        }
+        /* Specific styles for examples will be defined within the example-preview or in the example's CSS block */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>More Simple CSS Examples</h1>
+
+        <ol>
+            <li>
+                <details>
+                    <summary>Rounded Corners (<code>border-radius</code>)</summary>
+                    <div>
+                        <p>The <code>border-radius</code> property is used to add rounded corners to an element's border.</p>
+                        <h4>Example HTML:</h4>
+                        <pre><code class="language-html">&lt;div class="rounded-box"&gt;This box has rounded corners.&lt;/div&gt;
+&lt;button class="rounded-button"&gt;Rounded Button&lt;/button&gt;</code></pre>
+                        <h4>Example CSS:</h4>
+                        <pre><code class="language-css">
+.rounded-box {
+    background-color: #abebc6; /* Light green */
+    padding: 20px;
+    border: 2px solid #58d68d; /* Green */
+    border-radius: 15px; /* You can use px, %, or em */
+    text-align: center;
+}
+.rounded-button {
+    background-color: #85c1e9; /* Light blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px; /* Makes it pill-shaped if height allows */
+    cursor: pointer;
+    margin-top: 10px;
+}</code></pre>
+                        <h4>Result Preview:</h4>
+                        <div class="example-preview">
+                            <div style="background-color: #abebc6; padding: 20px; border: 2px solid #58d68d; border-radius: 15px; text-align: center;">
+                                This box has rounded corners.
+                            </div>
+                            <button style="background-color: #85c1e9; color: white; padding: 10px 20px; border: none; border-radius: 25px; cursor: pointer; margin-top: 10px;">
+                                Rounded Button
+                            </button>
+                        </div>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Drop Shadows (<code>box-shadow</code>)</summary>
+                    <div>
+                        <p>The <code>box-shadow</code> property adds shadow effects around an element's frame. You can specify multiple shadows.</p>
+                        <h4>Example HTML:</h4>
+                        <pre><code class="language-html">&lt;div class="shadow-box"&gt;This box has a subtle shadow.&lt;/div&gt;</code></pre>
+                        <h4>Example CSS:</h4>
+                        <pre><code class="language-css">
+.shadow-box {
+    background-color: #fdebd0; /* Pale orange */
+    padding: 20px;
+    border-radius: 5px;
+    /* box-shadow: h-offset v-offset blur spread color inset; */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}</code></pre>
+                        <h4>Result Preview:</h4>
+                        <div class="example-preview">
+                            <div style="background-color: #fdebd0; padding: 20px; border-radius: 5px; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); text-align: center;">
+                                This box has a subtle shadow.
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Transparency (<code>opacity</code>)</summary>
+                    <div>
+                        <p>The <code>opacity</code> property specifies the transparency of an element. The value ranges from 0.0 (fully transparent) to 1.0 (fully opaque).</p>
+                        <h4>Example HTML:</h4>
+                        <pre><code class="language-html">&lt;div class="opaque-box"&gt;Fully Opaque&lt;/div&gt;
+&lt;div class="semi-transparent-box"&gt;Semi-Transparent (0.6)&lt;/div&gt;</code></pre>
+                        <h4>Example CSS:</h4>
+                        <pre><code class="language-css">
+.opaque-box, .semi-transparent-box {
+    width: 150px;
+    padding: 15px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+}
+.opaque-box {
+    background-color: #c0392b; /* Pomegranate */
+    opacity: 1.0; /* Default */
+}
+.semi-transparent-box {
+    background-color: #2980b9; /* Belize Hole */
+    opacity: 0.6;
+}</code></pre>
+                        <h4>Result Preview:</h4>
+                        <div class="example-preview">
+                            <div style="width: 150px; padding: 15px; margin-bottom: 10px; color: white; text-align: center; background-color: #c0392b; opacity: 1.0;">
+                                Fully Opaque
+                            </div>
+                            <div style="width: 150px; padding: 15px; margin-bottom: 10px; color: white; text-align: center; background-color: #2980b9; opacity: 0.6;">
+                                Semi-Transparent (0.6)
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Styling Lists (<code>list-style-type</code>)</summary>
+                    <div>
+                        <p>The <code>list-style-type</code> property changes the appearance of the list item marker (e.g., bullets, numbers).</p>
+                        <h4>Example HTML:</h4>
+                        <pre><code class="language-html">&lt;ul class="custom-list-square"&gt;
+    &lt;li&gt;Item 1 (Square)&lt;/li&gt;
+    &lt;li&gt;Item 2 (Square)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="custom-list-none"&gt;
+    &lt;li&gt;Item A (No marker)&lt;/li&gt;
+    &lt;li&gt;Item B (No marker)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol class="custom-list-roman"&gt;
+    &lt;li&gt;First (Upper Roman)&lt;/li&gt;
+    &lt;li&gt;Second (Upper Roman)&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                        <h4>Example CSS:</h4>
+                        <pre><code class="language-css">
+.custom-list-square {
+    list-style-type: square;
+}
+.custom-list-none {
+    list-style-type: none; /* Removes markers */
+    padding-left: 0; /* Often desired when removing markers */
+}
+.custom-list-roman {
+    list-style-type: upper-roman;
+}</code></pre>
+                        <h4>Result Preview:</h4>
+                        <div class="example-preview">
+                            <ul style="list-style-type: square;">
+                                <li>Item 1 (Square)</li>
+                                <li>Item 2 (Square)</li>
+                            </ul>
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                <li>Item A (No marker)</li>
+                                <li>Item B (No marker)</li>
+                            </ul>
+                            <ol style="list-style-type: upper-roman;">
+                                <li>First (Upper Roman)</li>
+                                <li>Second (Upper Roman)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Changing Mouse Cursor (<code>cursor</code>)</summary>
+                    <div>
+                        <p>The <code>cursor</code> property specifies the mouse cursor to be displayed when pointing over an element.</p>
+                        <h4>Example HTML:</h4>
+                        <pre><code class="language-html">&lt;p class="cursor-pointer"&gt;Hover here for a pointer cursor.&lt;/p&gt;
+&lt;p class="cursor-help"&gt;Hover here for a help cursor.&lt;/p&gt;
+&lt;p class="cursor-wait"&gt;Hover here for a wait cursor.&lt;/p&gt;</code></pre>
+                        <h4>Example CSS:</h4>
+                        <pre><code class="language-css">
+.cursor-pointer {
+    cursor: pointer; /* Common for clickable items */
+    background-color: #f2f3f4; padding: 5px;
+}
+.cursor-help {
+    cursor: help;
+    background-color: #f2f3f4; padding: 5px;
+}
+.cursor-wait {
+    cursor: wait;
+    background-color: #f2f3f4; padding: 5px;
+}</code></pre>
+                        <h4>Result Preview:</h4>
+                        <div class="example-preview">
+                            <p style="cursor: pointer; background-color: #f2f3f4; padding: 5px; margin-bottom:5px;">Hover here for a pointer cursor.</p>
+                            <p style="cursor: help; background-color: #f2f3f4; padding: 5px; margin-bottom:5px;">Hover here for a help cursor.</p>
+                            <p style="cursor: wait; background-color: #f2f3f4; padding: 5px;">Hover here for a wait cursor.</p>
+                        </div>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Handling Content Overflow (<code>overflow</code>)</summary>
+                    <div>
+                        <p>The <code>overflow</code> property controls what happens to content that is too big to fit into an element's box.</p>
+                        <ul>
+                            <li><code>visible</code>: Default. Content renders outside the element's box.</li>
+                            <li><code>hidden</code>: Content is clipped and the rest is invisible.</li>
+                            <li><code>scroll</code>: Content is clipped, but scrollbars are added to see the rest.</li>
+                            <li><code>auto</code>: Adds scrollbars only when necessary.</li>
+                        </ul>
+                        <h4>Example HTML:</h4>
+                        <pre><code class="language-html">&lt;div class="overflow-box scroll-example"&gt;
+    This is a lot of text that will likely overflow this small box.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+&lt;/div&gt;
+&lt;div class="overflow-box hidden-example"&gt;
+    This text will be hidden if it overflows. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+&lt;/div&gt;</code></pre>
+                        <h4>Example CSS:</h4>
+                        <pre><code class="language-css">
+.overflow-box {
+    width: 200px;
+    height: 70px;
+    border: 1px solid #7d3c98; /* Purple */
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #e8daef; /* Light purple */
+}
+.scroll-example {
+    overflow: scroll; /* Always show scrollbars */
+}
+.hidden-example {
+    overflow: hidden; /* Clip content */
+}</code></pre>
+                        <h4>Result Preview:</h4>
+                        <div class="example-preview">
+                            <div style="width: 200px; height: 70px; border: 1px solid #7d3c98; padding: 10px; margin-bottom: 15px; background-color: #e8daef; overflow: scroll;">
+                                This is a lot of text that will likely overflow this small box.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                            <div style="width: 200px; height: 70px; border: 1px solid #7d3c98; padding: 10px; background-color: #e8daef; overflow: hidden;">
+                                This text will be hidden if it overflows. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Hiding Elements (<code>display: none</code> vs <code>visibility: hidden</code>)</summary>
+                    <div>
+                        <p>Two common ways to hide elements:</p>
+                        <ul>
+                            <li><code>display: none;</code>: Removes the element from the document flow entirely. It takes up no space.</li>
+                            <li><code>visibility: hidden;</code>: Hides the element, but it still occupies its space in the layout.</li>
+                        </ul>
+                        <h4>Example HTML:</h4>
+                        <pre><code class="language-html">&lt;div&gt;Element Before&lt;/div&gt;
+&lt;div class="hidden-display-none"&gt;Hidden with display: none&lt;/div&gt;
+&lt;div&gt;Element After (display: none)&lt;/div&gt;
+&lt;hr&gt;
+&lt;div&gt;Element Before&lt;/div&gt;
+&lt;div class="hidden-visibility"&gt;Hidden with visibility: hidden&lt;/div&gt;
+&lt;div&gt;Element After (visibility: hidden)&lt;/div&gt;</code></pre>
+                        <h4>Example CSS:</h4>
+                        <pre><code class="language-css">
+.hidden-display-none, .hidden-visibility, div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 5px;
+    background-color: #f9e79f; /* Light yellow */
+}
+.hidden-display-none {
+    display: none;
+}
+.hidden-visibility {
+    visibility: hidden;
+}</code></pre>
+                        <h4>Result Preview:</h4>
+                        <div class="example-preview">
+                            <style>
+                                .preview-box { padding: 10px; border: 1px solid #ccc; margin: 5px; background-color: #f9e79f; }
+                            </style>
+                            <div class="preview-box">Element Before</div>
+                            <div class="preview-box" style="display: none;">Hidden with display: none</div>
+                            <div class="preview-box">Element After (display: none)</div>
+                            <hr style="margin: 10px 0;">
+                            <div class="preview-box">Element Before</div>
+                            <div class="preview-box" style="visibility: hidden;">Hidden with visibility: hidden</div>
+                            <div class="preview-box">Element After (visibility: hidden)</div>
+                        </div>
+                    </div>
+                </details>
+            </li>
+        </ol>
+    </div>
+</body>
+</html>

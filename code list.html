@@ -1,0 +1,2305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Simple HTML, CSS & JS Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+        }
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+        summary:hover {
+            color: #2563eb; /* Tailwind blue-600 */
+        }
+        details[open] summary {
+            color: #1d4ed8; /* Tailwind blue-700 */
+        }
+        details {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb; /* Tailwind gray-200 */
+            border-radius: 0.5rem; /* Rounded corners */
+            margin-bottom: 1rem;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
+        }
+        pre {
+            background-color: #f3f4f6; /* Tailwind gray-100 */
+            padding: 0.75rem;
+            border-radius: 0.375rem; /* Rounded corners for code blocks */
+            overflow-x: auto;
+            font-size: 0.875rem; /* Smaller font for code */
+            border: 1px solid #d1d5db; /* Tailwind gray-300 */
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        h1, h2, h3, h4 {
+            color: #1f2937; /* Tailwind gray-800 */
+        }
+        .project-description {
+            font-size: 0.9rem;
+            color: #4b5563; /* Tailwind gray-600 */
+            margin-bottom: 0.75rem;
+        }
+        .code-heading {
+            font-weight: 500;
+            margin-top: 1rem;
+            margin-bottom: 0.25rem;
+            color: #374151; /* Tailwind gray-700 */
+        }
+        .file-suggestion {
+            font-size: 0.75rem;
+            color: #6b7280; /* Tailwind gray-500 */
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 p-4 md:p-8">
+    <div class="container mx-auto max-w-4xl">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-sky-700 mb-2">20 Simple HTML, CSS & JS Projects</h1>
+            <p class="text-lg text-slate-600">Click on a project name to see the code.</p>
+        </header>
+
+        <ol class="space-y-6">
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">1. Background Color Flipper</summary>
+                    <div class="mt-3">
+                        <p class="project-description">Click a button to change the background color of the page to a random hex color.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Color Flipper&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body id="body"&gt;
+    &lt;div class="container"&gt;
+        &lt;h2&gt;Background Color: &lt;span id="color-hex"&gt;#FFFFFF&lt;/span&gt;&lt;/h2&gt;
+        &lt;button id="flip-button"&gt;Flip Color&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.5s ease;
+}
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #0056b3;
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const body = document.getElementById('body');
+const colorHexSpan = document.getElementById('color-hex');
+const flipButton = document.getElementById('flip-button');
+
+const hexChars = '0123456789ABCDEF';
+
+function getRandomHexColor() {
+    let hexColor = '#';
+    for (let i = 0; i < 6; i++) {
+        hexColor += hexChars[Math.floor(Math.random() * 16)];
+    }
+    return hexColor;
+}
+
+flipButton.addEventListener('click', () => {
+    const newColor = getRandomHexColor();
+    body.style.backgroundColor = newColor;
+    colorHexSpan.textContent = newColor;
+});
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">2. Simple Counter</summary>
+                    <div class="mt-3">
+                        <p class="project-description">A basic counter with increment, decrement, and reset functionalities.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Counter&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="counter-container"&gt;
+        &lt;h1&gt;Counter&lt;/h1&gt;
+        &lt;span id="count-value"&gt;0&lt;/span&gt;
+        &lt;div class="buttons"&gt;
+            &lt;button id="decrement-btn"&gt;Decrement&lt;/button&gt;
+            &lt;button id="reset-btn"&gt;Reset&lt;/button&gt;
+            &lt;button id="increment-btn"&gt;Increment&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+.counter-container {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+#count-value {
+    font-size: 4rem;
+    margin: 20px 0;
+    display: block;
+    color: #333;
+}
+.buttons button {
+    padding: 10px 15px;
+    margin: 0 5px;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#decrement-btn { background-color: #dc3545; }
+#reset-btn { background-color: #6c757d; }
+#increment-btn { background-color: #28a745; }
+
+#decrement-btn:hover { background-color: #c82333; }
+#reset-btn:hover { background-color: #5a6268; }
+#increment-btn:hover { background-color: #218838; }
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const countValue = document.getElementById('count-value');
+const incrementBtn = document.getElementById('increment-btn');
+const decrementBtn = document.getElementById('decrement-btn');
+const resetBtn = document.getElementById('reset-btn');
+
+let count = 0;
+
+function updateDisplay() {
+    countValue.textContent = count;
+}
+
+incrementBtn.addEventListener('click', () => {
+    count++;
+    updateDisplay();
+});
+
+decrementBtn.addEventListener('click', () => {
+    count--;
+    updateDisplay();
+});
+
+resetBtn.addEventListener('click', () => {
+    count = 0;
+    updateDisplay();
+});
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">3. Digital Clock</summary>
+                    <div class="mt-3">
+                        <p class="project-description">Displays the current time, updating every second.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Digital Clock&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="clock"&gt;12:00:00 PM&lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #222;
+    font-family: 'Orbitron', sans-serif; /* A more digital-looking font */
+}
+#clock {
+    font-size: 4rem; /* Responsive font size could be better */
+    color: #0f0; /* Green neon color */
+    background-color: #000;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #0f0, 0 0 30px #0f0 inset;
+    text-shadow: 0 0 10px #0f0;
+}
+/* Consider adding @font-face for Orbitron or similar if not available */
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const clockElement = document.getElementById('clock');
+
+function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    const hoursStr = String(hours).padStart(2, '0');
+    
+    clockElement.textContent = `${hoursStr}:${minutes}:${seconds} ${ampm}`;
+}
+
+setInterval(updateClock, 1000);
+updateClock(); // Initial call
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">4. Basic To-Do List (UI)</summary>
+                    <div class="mt-3">
+                        <p class="project-description">Add items to a list. Items can be marked as completed or removed. No local storage.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;To-Do List&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="todo-container"&gt;
+        &lt;h1&gt;My To-Do List&lt;/h1&gt;
+        &lt;input type="text" id="todo-input" placeholder="Add a new task..."&gt;
+        &lt;button id="add-task-btn"&gt;Add Task&lt;/button&gt;
+        &lt;ul id="task-list"&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef2f7;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top for longer lists */
+    min-height: 100vh;
+    padding-top: 50px;
+    margin: 0;
+}
+.todo-container {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 400px; /* Max width */
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+#todo-input {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+#add-task-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+#add-task-btn:hover {
+    background-color: #4cae4c;
+}
+#task-list {
+    list-style-type: none;
+    padding: 0;
+}
+#task-list li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#task-list li:last-child {
+    border-bottom: none;
+}
+#task-list li.completed span {
+    text-decoration: line-through;
+    color: #aaa;
+}
+.task-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 8px;
+    font-size: 0.9em;
+}
+.remove-btn { color: #d9534f; }
+.complete-btn { color: #5cb85c; }
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const todoInput = document.getElementById('todo-input');
+const addTaskBtn = document.getElementById('add-task-btn');
+const taskList = document.getElementById('task-list');
+
+addTaskBtn.addEventListener('click', addTask);
+todoInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        addTask();
+    }
+});
+
+function addTask() {
+    const taskText = todoInput.value.trim();
+    if (taskText === '') {
+        alert('Please enter a task.');
+        return;
+    }
+
+    const listItem = document.createElement('li');
+    
+    const taskSpan = document.createElement('span');
+    taskSpan.textContent = taskText;
+
+    const actionsDiv = document.createElement('div');
+    actionsDiv.classList.add('task-actions');
+
+    const completeButton = document.createElement('button');
+    completeButton.textContent = '✔';
+    completeButton.classList.add('complete-btn');
+    completeButton.onclick = function() {
+        listItem.classList.toggle('completed');
+    };
+
+    const removeButton = document.createElement('button');
+    removeButton.textContent = '✖';
+    removeButton.classList.add('remove-btn');
+    removeButton.onclick = function() {
+        taskList.removeChild(listItem);
+    };
+
+    actionsDiv.appendChild(completeButton);
+    actionsDiv.appendChild(removeButton);
+    
+    listItem.appendChild(taskSpan);
+    listItem.appendChild(actionsDiv);
+    taskList.appendChild(listItem);
+
+    todoInput.value = ''; // Clear input field
+}
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">5. Random Number Generator</summary>
+                    <div class="mt-3">
+                        <p class="project-description">Generates and displays a random number within a specified range (e.g., 1-100) on button click.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Random Number Generator&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1&gt;Random Number Generator&lt;/h1&gt;
+        &lt;p&gt;Generates a number between 1 and 100.&lt;/p&gt;
+        &lt;div id="randomNumberDisplay"&gt;?&lt;/div&gt;
+        &lt;button id="generateBtn"&gt;Generate Number&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f8ff; /* AliceBlue */
+}
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+#randomNumberDisplay {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin: 20px 0;
+    padding: 10px;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    min-width: 100px; /* Ensure some width */
+    display: inline-block;
+}
+#generateBtn {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    color: white;
+    background-color: #ff6347; /* Tomato */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#generateBtn:hover {
+    background-color: #e55337; /* Darker Tomato */
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const randomNumberDisplay = document.getElementById('randomNumberDisplay');
+const generateBtn = document.getElementById('generateBtn');
+
+generateBtn.addEventListener('click', () => {
+    // Generate a random number between 1 and 100 (inclusive)
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    randomNumberDisplay.textContent = randomNumber;
+});
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">6. Simple Modal/Popup</summary>
+                    <div class="mt-3">
+                        <p class="project-description">A button opens a modal dialog, which can be closed.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Simple Modal&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;button id="openModalBtn"&gt;Open Modal&lt;/button&gt;
+
+    &lt;div id="myModal" class="modal"&gt;
+        &lt;div class="modal-content"&gt;
+            &lt;span class="close-btn"&gt;&amp;times;&lt;/span&gt;
+            &lt;h2&gt;Modal Title&lt;/h2&gt;
+            &lt;p&gt;This is a simple modal window. You can put any content here.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+
+#openModalBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const modal = document.getElementById('myModal');
+const openModalBtn = document.getElementById('openModalBtn');
+const closeBtn = document.querySelector('.close-btn');
+
+openModalBtn.onclick = function() {
+    modal.style.display = 'block';
+}
+
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+}
+
+// Close modal if user clicks outside of the modal content
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+            
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">7. Simple Accordion</summary>
+                    <div class="mt-3">
+                        <p class="project-description">A single accordion item that expands and collapses on click.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Simple Accordion&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="accordion"&gt;
+        &lt;div class="accordion-item"&gt;
+            &lt;button class="accordion-header"&gt;Section 1 Title &lt;span class="icon"&gt;+&lt;/span&gt;&lt;/button&gt;
+            &lt;div class="accordion-content"&gt;
+                &lt;p&gt;This is the content of the first section. It is hidden by default and shown when the header is clicked.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    background-color: #f4f7f6;
+}
+.accordion {
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden; /* Important for rounded corners with children */
+}
+.accordion-item {
+    border-bottom: 1px solid #ccc;
+}
+.accordion-item:last-child {
+    border-bottom: none;
+}
+.accordion-header {
+    background-color: #e9ecef;
+    color: #333;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.accordion-header:hover, .accordion-header.active {
+    background-color: #dde2e6;
+}
+.accordion-header .icon {
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+.accordion-header.active .icon {
+    transform: rotate(45deg);
+}
+.accordion-content {
+    padding: 0 15px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+.accordion-content p {
+    margin: 15px 0;
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const accordionHeader = document.querySelector('.accordion-header');
+const accordionContent = document.querySelector('.accordion-content');
+const icon = accordionHeader.querySelector('.icon');
+
+accordionHeader.addEventListener('click', function() {
+    this.classList.toggle('active');
+    if (this.classList.contains('active')) {
+        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+        accordionContent.style.padding = "15px";
+        icon.textContent = '-';
+    } else {
+        accordionContent.style.maxHeight = "0";
+        accordionContent.style.padding = "0 15px";
+        icon.textContent = '+';
+    }
+});
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">8. Tip Calculator</summary>
+                    <div class="mt-3">
+                        <p class="project-description">Calculate tip amount and total bill based on bill amount, tip percentage, and number of people.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Tip Calculator&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="calculator-container"&gt;
+        &lt;h1&gt;Tip Calculator&lt;/h1&gt;
+        &lt;div class="input-group"&gt;
+            &lt;label for="billAmount"&gt;Bill Amount ($):&lt;/label&gt;
+            &lt;input type="number" id="billAmount" placeholder="0.00" min="0" step="0.01"&gt;
+        &lt;/div&gt;
+        &lt;div class="input-group"&gt;
+            &lt;label for="tipPercentage"&gt;Tip Percentage (%):&lt;/label&gt;
+            &lt;input type="number" id="tipPercentage" value="15" min="0" max="100"&gt;
+        &lt;/div&gt;
+        &lt;div class="input-group"&gt;
+            &lt;label for="numberOfPeople"&gt;Number of People:&lt;/label&gt;
+            &lt;input type="number" id="numberOfPeople" value="1" min="1"&gt;
+        &lt;/div&gt;
+        &lt;button id="calculateBtn"&gt;Calculate&lt;/button&gt;
+        &lt;div id="results" class="results-area"&gt;
+            &lt;p&gt;Tip Amount: &lt;span id="tipAmount"&gt;$0.00&lt;/span&gt;&lt;/p&gt;
+            &lt;p&gt;Total Per Person: &lt;span id="totalPerPerson"&gt;$0.00&lt;/span&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #607d8b; /* Blue Grey */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    margin: 0;
+}
+.calculator-container {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 400px;
+}
+h1 {
+    text-align: center;
+    color: #2c3e50; /* Dark Blue */
+    margin-bottom: 20px;
+}
+.input-group {
+    margin-bottom: 15px;
+}
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+.input-group input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+#calculateBtn {
+    width: 100%;
+    padding: 12px;
+    background-color: #1abc9c; /* Turquoise */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+#calculateBtn:hover {
+    background-color: #16a085; /* Darker Turquoise */
+}
+.results-area {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+.results-area p {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #444;
+}
+.results-area span {
+    font-weight: bold;
+    color: #2c3e50;
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const billAmountInput = document.getElementById('billAmount');
+const tipPercentageInput = document.getElementById('tipPercentage');
+const numberOfPeopleInput = document.getElementById('numberOfPeople');
+const calculateBtn = document.getElementById('calculateBtn');
+const tipAmountSpan = document.getElementById('tipAmount');
+const totalPerPersonSpan = document.getElementById('totalPerPerson');
+
+calculateBtn.addEventListener('click', () => {
+    const bill = parseFloat(billAmountInput.value);
+    const tipPercent = parseFloat(tipPercentageInput.value);
+    const people = parseInt(numberOfPeopleInput.value);
+
+    if (isNaN(bill) || bill <= 0) {
+        alert('Please enter a valid bill amount.');
+        return;
+    }
+    if (isNaN(tipPercent) || tipPercent < 0) {
+        alert('Please enter a valid tip percentage.');
+        return;
+    }
+    if (isNaN(people) || people < 1) {
+        alert('Number of people must be at least 1.');
+        return;
+    }
+
+    const tipTotal = bill * (tipPercent / 100);
+    const totalBillWithTip = bill + tipTotal;
+    const totalPerPerson = totalBillWithTip / people;
+
+    tipAmountSpan.textContent = `$${tipTotal.toFixed(2)}`;
+    totalPerPersonSpan.textContent = `$${totalPerPerson.toFixed(2)}`;
+});
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">9. Hex Color Generator</summary>
+                    <div class="mt-3">
+                        <p class="project-description">Generates a random hex color code and displays it. Optionally, apply it to an element.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Hex Color Generator&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1&gt;Hex Color Generator&lt;/h1&gt;
+        &lt;div id="color-box"&gt;&lt;/div&gt;
+        &lt;span id="hex-code-display"&gt;#FFFFFF&lt;/span&gt;
+        &lt;button id="generate-color-btn"&gt;Generate New Color&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ecf0f1; /* Clouds */
+}
+.container {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+h1 {
+    color: #2c3e50; /* Midnight Blue */
+    margin-bottom: 25px;
+}
+#color-box {
+    width: 150px;
+    height: 150px;
+    background-color: #FFFFFF; /* Initial color */
+    border: 2px solid #bdc3c7; /* Silver */
+    border-radius: 8px;
+    margin: 0 auto 20px auto;
+    transition: background-color 0.5s ease;
+}
+#hex-code-display {
+    display: block;
+    font-size: 1.5rem;
+    color: #34495e; /* Wet Asphalt */
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+#generate-color-btn {
+    padding: 12px 28px;
+    font-size: 1rem;
+    color: white;
+    background-color: #9b59b6; /* Amethyst */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#generate-color-btn:hover {
+    background-color: #8e44ad; /* Darker Amethyst */
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const colorBox = document.getElementById('color-box');
+const hexCodeDisplay = document.getElementById('hex-code-display');
+const generateBtn = document.getElementById('generate-color-btn');
+
+const hexChars = '0123456789ABCDEF';
+
+function getRandomHexColor() {
+    let hexColor = '#';
+    for (let i = 0; i < 6; i++) {
+        hexColor += hexChars[Math.floor(Math.random() * 16)];
+    }
+    return hexColor;
+}
+
+generateBtn.addEventListener('click', () => {
+    const newColor = getRandomHexColor();
+    colorBox.style.backgroundColor = newColor;
+    hexCodeDisplay.textContent = newColor;
+});
+
+// Initial color generation
+generateBtn.click();
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">10. Basic Image Slider</summary>
+                    <div class="mt-3">
+                        <p class="project-description">A simple image carousel with next and previous buttons to cycle through a few images.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Image Slider&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="slider-container"&gt;
+        &lt;div class="slider"&gt;
+            &lt;img src="https://placehold.co/600x300/3498db/ffffff?text=Image+1" alt="Image 1" class="slide active"&gt;
+            &lt;img src="https://placehold.co/600x300/2ecc71/ffffff?text=Image+2" alt="Image 2" class="slide"&gt;
+            &lt;img src="https://placehold.co/600x300/e74c3c/ffffff?text=Image+3" alt="Image 3" class="slide"&gt;
+        &lt;/div&gt;
+        &lt;button class="prev-btn"&gt;&amp;#10094;&lt;/button&gt;
+        &lt;button class="next-btn"&gt;&amp;#10095;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: sans-serif;
+}
+.slider-container {
+    position: relative;
+    width: 600px; /* Adjust as needed */
+    max-width: 90%;
+    overflow: hidden; /* Hides parts of images outside the container */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.slider {
+    display: flex; /* Aligns images in a row */
+    transition: transform 0.5s ease-in-out;
+}
+.slide {
+    min-width: 100%;
+    object-fit: cover; /* Ensures images cover the slide area */
+    display: none; /* Hide all slides initially */
+}
+.slide.active {
+    display: block; /* Show active slide */
+}
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10;
+    border-radius: 3px;
+}
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const slides = document.querySelectorAll('.slide');
+const nextBtn = document.querySelector('.next-btn');
+const prevBtn = document.querySelector('.prev-btn');
+let currentIndex = 0;
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+            slide.classList.add('active');
+        }
+    });
+}
+
+nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+});
+
+prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+});
+
+// Show the first slide initially
+showSlide(currentIndex);
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">11. Character Counter</summary>
+                    <div class="mt-3">
+                        <p class="project-description">Counts and displays the number of characters in a textarea as the user types.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Character Counter&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1&gt;Character Counter&lt;/h1&gt;
+        &lt;textarea id="text-input" placeholder="Start typing..." maxlength="200"&gt;&lt;/textarea&gt;
+        &lt;p&gt;Character count: &lt;span id="char-count"&gt;0&lt;/span&gt; / 200&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+}
+.container {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 500px;
+}
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+}
+textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Important for width 100% */
+}
+p {
+    text-align: right;
+    color: #555;
+    font-size: 0.9rem;
+}
+#char-count {
+    font-weight: bold;
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const textInput = document.getElementById('text-input');
+const charCountSpan = document.getElementById('char-count');
+const maxLength = textInput.getAttribute('maxlength');
+
+textInput.addEventListener('input', () => {
+    const currentLength = textInput.value.length;
+    charCountSpan.textContent = currentLength;
+
+    // Optional: Change color if near/at limit
+    if (currentLength >= maxLength * 0.9) {
+        charCountSpan.style.color = 'red';
+    } else if (currentLength >= maxLength * 0.7) {
+        charCountSpan.style.color = 'orange';
+    } else {
+        charCountSpan.style.color = 'inherit';
+    }
+});
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">12. Simple Quiz (1 Question)</summary>
+                    <div class="mt-3">
+                        <p class="project-description">A single multiple-choice question with a submit button to check the answer.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Simple Quiz&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="quiz-container"&gt;
+        &lt;h1&gt;Simple Quiz&lt;/h1&gt;
+        &lt;p id="question"&gt;What is the capital of France?&lt;/p&gt;
+        &lt;div class="options"&gt;
+            &lt;label&gt;&lt;input type="radio" name="answer" value="Berlin"&gt; Berlin&lt;/label&gt;
+            &lt;label&gt;&lt;input type="radio" name="answer" value="Madrid"&gt; Madrid&lt;/label&gt;
+            &lt;label&gt;&lt;input type="radio" name="answer" value="Paris"&gt; Paris&lt;/label&gt;
+            &lt;label&gt;&lt;input type="radio" name="answer" value="Rome"&gt; Rome&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;button id="submit-btn"&gt;Submit Answer&lt;/button&gt;
+        &lt;p id="feedback"&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    font-family: 'Verdana', sans-serif;
+    background-color: #e0f7fa; /* Light Cyan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+.quiz-container {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    width: 90%;
+    max-width: 450px;
+}
+h1 {
+    text-align: center;
+    color: #00796b; /* Teal */
+    margin-bottom: 15px;
+}
+#question {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+.options label {
+    display: block;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.options label:hover {
+    background-color: #f1f1f1;
+}
+.options input[type="radio"] {
+    margin-right: 10px;
+}
+#submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #00796b; /* Teal */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+}
+#submit-btn:hover {
+    background-color: #004d40; /* Darker Teal */
+}
+#feedback {
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+.correct { color: green; }
+.incorrect { color: red; }
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const submitBtn = document.getElementById('submit-btn');
+const feedbackP = document.getElementById('feedback');
+const correctAnswer = "Paris"; // Correct answer for the question
+
+submitBtn.addEventListener('click', () => {
+    const selectedOption = document.querySelector('input[name="answer"]:checked');
+    
+    if (!selectedOption) {
+        feedbackP.textContent = "Please select an answer.";
+        feedbackP.className = 'incorrect'; // Or a neutral class
+        return;
+    }
+
+    if (selectedOption.value === correctAnswer) {
+        feedbackP.textContent = "Correct!";
+        feedbackP.className = 'correct';
+    } else {
+        feedbackP.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
+        feedbackP.className = 'incorrect';
+    }
+});
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">13. Fahrenheit to Celsius Converter</summary>
+                    <div class="mt-3">
+                        <p class="project-description">Converts temperature from Fahrenheit to Celsius.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;F to C Converter&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="converter-container"&gt;
+        &lt;h1&gt;Fahrenheit to Celsius&lt;/h1&gt;
+        &lt;label for="fahrenheit"&gt;Fahrenheit (°F):&lt;/label&gt;
+        &lt;input type="number" id="fahrenheit" placeholder="Enter °F"&gt;
+        &lt;button id="convert-btn"&gt;Convert&lt;/button&gt;
+        &lt;p&gt;Celsius (°C): &lt;span id="celsius-result"&gt;---&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e3f2fd; /* Light Blue */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.converter-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+h1 {
+    color: #1565c0; /* Darker Blue */
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #bbdefb; /* Lighter Blue Border */
+    border-radius: 4px;
+    font-size: 1rem;
+}
+#convert-btn {
+    padding: 10px 20px;
+    background-color: #1e88e5; /* Blue */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+#convert-btn:hover {
+    background-color: #1565c0; /* Darker Blue */
+}
+p {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #333;
+}
+#celsius-result {
+    font-weight: bold;
+    color: #d32f2f; /* Red for result */
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const fahrenheitInput = document.getElementById('fahrenheit');
+const convertBtn = document.getElementById('convert-btn');
+const celsiusResultSpan = document.getElementById('celsius-result');
+
+convertBtn.addEventListener('click', () => {
+    const fahrenheitValue = parseFloat(fahrenheitInput.value);
+
+    if (isNaN(fahrenheitValue)) {
+        celsiusResultSpan.textContent = "Invalid input";
+        celsiusResultSpan.style.color = "red";
+        return;
+    }
+
+    const celsiusValue = (fahrenheitValue - 32) * 5/9;
+    celsiusResultSpan.textContent = celsiusValue.toFixed(2);
+    celsiusResultSpan.style.color = "#d32f2f"; // Or your preferred result color
+});
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">14. Basic Stopwatch</summary>
+                    <div class="mt-3">
+                        <p class="project-description">A simple stopwatch with start, stop, and reset buttons.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Stopwatch&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="stopwatch-container"&gt;
+        &lt;h1&gt;Stopwatch&lt;/h1&gt;
+        &lt;div id="display"&gt;00:00:00.000&lt;/div&gt;
+        &lt;div class="buttons"&gt;
+            &lt;button id="startBtn"&gt;Start&lt;/button&gt;
+            &lt;button id="stopBtn"&gt;Stop&lt;/button&gt;
+            &lt;button id="resetBtn"&gt;Reset&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #282c34; /* Dark background */
+    color: #61dafb; /* React blue for text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+.stopwatch-container {
+    background: #20232a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    text-align: center;
+}
+h1 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+#display {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    padding: 10px;
+    background-color: #1a1c21;
+    border-radius: 5px;
+    color: #0f0; /* Green display text */
+}
+.buttons button {
+    padding: 10px 20px;
+    margin: 0 8px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+#startBtn { background-color: #4CAF50; color: white; } /* Green */
+#stopBtn { background-color: #f44336; color: white; }  /* Red */
+#resetBtn { background-color: #ffc107; color: black; } /* Amber */
+
+.buttons button:hover {
+    opacity: 0.8;
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const display = document.getElementById('display');
+const startBtn = document.getElementById('startBtn');
+const stopBtn = document.getElementById('stopBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+let startTime;
+let elapsedTime = 0;
+let timerInterval;
+
+function formatTime(time) {
+    const milliseconds = String(time % 1000).padStart(3, '0');
+    const seconds = String(Math.floor(time / 1000) % 60).padStart(2, '0');
+    const minutes = String(Math.floor(time / (1000 * 60)) % 60).padStart(2, '0');
+    const hours = String(Math.floor(time / (1000 * 60 * 60))).padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}.${milliseconds}`;
+}
+
+function updateDisplay() {
+    display.textContent = formatTime(elapsedTime);
+}
+
+function startTimer() {
+    startTime = Date.now() - elapsedTime;
+    timerInterval = setInterval(() => {
+        elapsedTime = Date.now() - startTime;
+        updateDisplay();
+    }, 10); // Update every 10 milliseconds for smoother display
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+}
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    elapsedTime = 0;
+    updateDisplay();
+    startBtn.disabled = false;
+    stopBtn.disabled = true; // Or false if you want to allow stop after reset
+}
+
+startBtn.addEventListener('click', startTimer);
+stopBtn.addEventListener('click', stopTimer);
+resetBtn.addEventListener('click', resetTimer);
+
+// Initial state
+stopBtn.disabled = true;
+updateDisplay();
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">15. Mouse Event Tracker</summary>
+                    <div class="mt-3">
+                        <p class="project-description">Displays the current X and Y coordinates of the mouse cursor within a specific area.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mouse Tracker&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="tracking-area"&gt;
+        Move mouse here
+    &lt;/div&gt;
+    &lt;p&gt;Mouse X: &lt;span id="mouseX"&gt;0&lt;/span&gt;&lt;/p&gt;
+    &lt;p&gt;Mouse Y: &lt;span id="mouseY"&gt;0&lt;/span&gt;&lt;/p&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f7f7f7;
+}
+#tracking-area {
+    width: 300px;
+    height: 200px;
+    background-color: #add8e6; /* Light blue */
+    border: 2px solid #87ceeb; /* Sky blue */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+p {
+    font-size: 1.1rem;
+    color: #555;
+}
+span {
+    font-weight: bold;
+    color: #007bff;
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const trackingArea = document.getElementById('tracking-area');
+const mouseXSpan = document.getElementById('mouseX');
+const mouseYSpan = document.getElementById('mouseY');
+
+trackingArea.addEventListener('mousemove', (event) => {
+    // Get coordinates relative to the trackingArea element
+    const rect = trackingArea.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    mouseXSpan.textContent = x.toFixed(0);
+    mouseYSpan.textContent = y.toFixed(0);
+});
+
+// Optional: Reset when mouse leaves the area
+trackingArea.addEventListener('mouseleave', () => {
+    // mouseXSpan.textContent = '0';
+    // mouseYSpan.textContent = '0';
+    // Or keep last known position
+});
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">16. Key Code Detector</summary>
+                    <div class="mt-3">
+                        <p class="project-description">Displays the `key`, `keyCode` (deprecated but illustrative), and `code` of the key pressed on the keyboard.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Key Code Detector&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;p id="prompt"&gt;Press any key&lt;/p&gt;
+        &lt;div class="key-info"&gt;
+            &lt;div&gt;event.key: &lt;span id="key-display"&gt;-&lt;/span&gt;&lt;/div&gt;
+            &lt;div&gt;event.keyCode: &lt;span id="keyCode-display"&gt;-&lt;/span&gt; (Deprecated)&lt;/div&gt;
+            &lt;div&gt;event.code: &lt;span id="code-display"&gt;-&lt;/span&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Consolas', monospace;
+    background-color: #333;
+    color: #eee;
+}
+.container {
+    text-align: center;
+}
+#prompt {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 2px dashed #888;
+    border-radius: 5px;
+    display: inline-block; /* So border fits content */
+}
+.key-info div {
+    background-color: #444;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    min-width: 250px; /* Ensure some width */
+    display: inline-block; /* Arrange side-by-side or stack nicely */
+}
+.key-info span {
+    color: #61dafb; /* Light blue for values */
+    font-weight: bold;
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const keyDisplay = document.getElementById('key-display');
+const keyCodeDisplay = document.getElementById('keyCode-display');
+const codeDisplay = document.getElementById('code-display');
+const promptElement = document.getElementById('prompt');
+
+window.addEventListener('keydown', (event) => {
+    // Prevent default for some keys like space scrolling the page if input focused
+    // event.preventDefault(); 
+
+    keyDisplay.textContent = event.key === ' ' ? 'Space' : event.key;
+    keyCodeDisplay.textContent = event.keyCode; // Deprecated
+    codeDisplay.textContent = event.code;
+
+    promptElement.style.display = 'none'; // Hide "Press any key"
+});
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">17. Dark/Light Mode Toggle</summary>
+                    <div class="mt-3">
+                        <p class="project-description">A simple button to toggle the page theme between dark and light modes.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Theme Toggle&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body class="light-mode"&gt; &lt;!-- Start with light mode --&gt;
+    &lt;div class="content"&gt;
+        &lt;h1&gt;Hello World!&lt;/h1&gt;
+        &lt;p&gt;This is some sample text to demonstrate the theme change.&lt;/p&gt;
+        &lt;button id="theme-toggle-btn"&gt;Toggle Dark Mode&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+/* Light Mode Defaults */
+body.light-mode {
+    background-color: #ffffff;
+    color: #333333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+body.light-mode .content {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+body.light-mode button {
+    background-color: #007bff;
+    color: white;
+}
+body.light-mode button:hover {
+    background-color: #0056b3;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+body.dark-mode .content {
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+}
+body.dark-mode button {
+    background-color: #555;
+    color: #e0e0e0;
+}
+body.dark-mode button:hover {
+    background-color: #777;
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+.content {
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+h1 {
+    margin-top: 0;
+}
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
+const body = document.body;
+
+themeToggleBtn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    body.classList.toggle('light-mode'); // Ensure one is always present
+
+    if (body.classList.contains('dark-mode')) {
+        themeToggleBtn.textContent = 'Toggle Light Mode';
+    } else {
+        themeToggleBtn.textContent = 'Toggle Dark Mode';
+    }
+});
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">18. Password Visibility Toggle</summary>
+                    <div class="mt-3">
+                        <p class="project-description">An input field for passwords with a button/icon to toggle visibility.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Password Toggle&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1&gt;Enter Password&lt;/h1&gt;
+        &lt;div class="password-wrapper"&gt;
+            &lt;input type="password" id="password-input" placeholder="Password"&gt;
+            &lt;button id="toggle-password-btn"&gt;Show&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+}
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+.password-wrapper {
+    position: relative;
+    display: flex; /* Align input and button */
+    align-items: center; /* Vertically center them */
+}
+#password-input {
+    width: 100%; /* Take full width within wrapper */
+    padding: 10px;
+    padding-right: 60px; /* Space for the button */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+#toggle-password-btn {
+    position: absolute;
+    right: 5px; /* Position inside the input field's padding area */
+    top: 50%;
+    transform: translateY(-50%);
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+#toggle-password-btn:hover {
+    background: #ddd;
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const passwordInput = document.getElementById('password-input');
+const togglePasswordBtn = document.getElementById('toggle-password-btn');
+
+togglePasswordBtn.addEventListener('click', () => {
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+
+    // Change button text
+    togglePasswordBtn.textContent = type === 'password' ? 'Show' : 'Hide';
+});
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">19. Simple Sticky Notes (Add/Remove)</summary>
+                    <div class="mt-3">
+                        <p class="project-description">Allows users to add text notes that appear like sticky notes and remove them. No storage.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Sticky Notes&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="app-container"&gt;
+        &lt;h1&gt;Sticky Notes&lt;/h1&gt;
+        &lt;div class="controls"&gt;
+            &lt;textarea id="note-input" placeholder="Write your note here..."&gt;&lt;/textarea&gt;
+            &lt;button id="add-note-btn"&gt;Add Note&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div id="notes-container"&gt;
+            &lt;!-- Sticky notes will be added here --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; /* Fun font */
+    background-color: #corkboard; /* Simulating a corkboard */
+    background-image: url('https://www.transparenttextures.com/patterns/cork-wallet.png');
+    padding: 20px;
+    margin: 0;
+}
+.app-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.3); /* Slight overlay */
+    padding: 20px;
+    border-radius: 10px;
+}
+h1 {
+    text-align: center;
+    color: #4a3b31; /* Dark brown */
+}
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: stretch; /* Make textarea and button same height */
+}
+#note-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 60px;
+    font-family: inherit;
+}
+#add-note-btn {
+    padding: 10px 20px;
+    background-color: #ffcc00; /* Yellow */
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+#add-note-btn:hover {
+    background-color: #e6b800;
+}
+#notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.note {
+    background-color: #fffacd; /* LemonChiffon */
+    padding: 15px;
+    width: 200px;
+    height: 200px;
+    box-shadow: 5px 5px 7px rgba(0,0,0,0.2);
+    border-radius: 3px 3px 15px 3px; /* Note-like corner */
+    position: relative;
+    overflow-wrap: break-word; /* Wrap long words */
+    font-size: 1rem;
+}
+.note .remove-note-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #888;
+    cursor: pointer;
+}
+.note .remove-note-btn:hover {
+    color: #333;
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const noteInput = document.getElementById('note-input');
+const addNoteBtn = document.getElementById('add-note-btn');
+const notesContainer = document.getElementById('notes-container');
+
+addNoteBtn.addEventListener('click', createNote);
+
+function createNote() {
+    const noteText = noteInput.value.trim();
+    if (noteText === '') {
+        alert('Please write something for your note!');
+        return;
+    }
+
+    const noteDiv = document.createElement('div');
+    noteDiv.classList.add('note');
+    
+    const textP = document.createElement('p');
+    textP.textContent = noteText;
+    
+    const removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-note-btn');
+    removeBtn.innerHTML = '&times;'; // '✖' or HTML entity for 'x'
+    removeBtn.onclick = function() {
+        notesContainer.removeChild(noteDiv);
+    };
+
+    noteDiv.appendChild(textP);
+    noteDiv.appendChild(removeBtn);
+    notesContainer.appendChild(noteDiv);
+
+    // Random rotation for a more "sticky" look - optional
+    const randomRotation = Math.random() * 10 - 5; // -5 to +5 degrees
+    noteDiv.style.transform = `rotate(${randomRotation}deg)`;
+
+    noteInput.value = ''; // Clear the textarea
+}
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary class="text-xl text-sky-600">20. Rock Paper Scissors Game</summary>
+                    <div class="mt-3">
+                        <p class="project-description">Play Rock Paper Scissors against the computer. Displays choices and result.</p>
+                        <h4 class="code-heading">HTML (index.html):</h4>
+                        <pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Rock Paper Scissors&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="game-container"&gt;
+        &lt;h1&gt;Rock, Paper, Scissors!&lt;/h1&gt;
+        &lt;div class="choices"&gt;
+            &lt;button class="choice-btn" data-choice="rock"&gt;✊ Rock&lt;/button&gt;
+            &lt;button class="choice-btn" data-choice="paper"&gt;✋ Paper&lt;/button&gt;
+            &lt;button class="choice-btn" data-choice="scissors"&gt;✌️ Scissors&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="results"&gt;
+            &lt;p&gt;Your choice: &lt;span id="player-choice"&gt;-&lt;/span&gt;&lt;/p&gt;
+            &lt;p&gt;Computer's choice: &lt;span id="computer-choice"&gt;-&lt;/span&gt;&lt;/p&gt;
+            &lt;h2 id="result-text"&gt;Make your move!&lt;/h2&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <h4 class="code-heading">CSS (style.css):</h4>
+                        <pre><code class="language-css">
+body {
+    font-family: 'Arial Black', Gadget, sans-serif;
+    background-color: #2ecc71; /* Emerald Green */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    margin: 0;
+}
+.game-container {
+    background: rgba(0,0,0,0.2);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+h1 {
+    margin-bottom: 25px;
+    font-size: 2.5rem;
+}
+.choices {
+    margin-bottom: 30px;
+}
+.choice-btn {
+    padding: 15px 25px;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    background-color: #3498db; /* Peter River Blue */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+.choice-btn:hover {
+    background-color: #2980b9; /* Belize Hole Blue */
+    transform: scale(1.1);
+}
+.results p {
+    font-size: 1.2rem;
+    margin: 8px 0;
+}
+.results span {
+    font-weight: bold;
+    color: #f1c40f; /* Sun Flower Yellow */
+}
+#result-text {
+    margin-top: 20px;
+    font-size: 1.8rem;
+    color: #ecf0f1; /* Clouds White */
+}
+                        </code></pre>
+                        <h4 class="code-heading">JavaScript (script.js):</h4>
+                        <pre><code class="language-javascript">
+const choiceButtons = document.querySelectorAll('.choice-btn');
+const playerChoiceSpan = document.getElementById('player-choice');
+const computerChoiceSpan = document.getElementById('computer-choice');
+const resultText = document.getElementById('result-text');
+
+const choices = ['rock', 'paper', 'scissors'];
+
+choiceButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const playerChoice = button.dataset.choice;
+        const computerChoice = getComputerChoice();
+        displayChoices(playerChoice, computerChoice);
+        const winner = determineWinner(playerChoice, computerChoice);
+        displayResult(winner);
+    });
+});
+
+function getComputerChoice() {
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+}
+
+function displayChoices(player, computer) {
+    playerChoiceSpan.textContent = player.charAt(0).toUpperCase() + player.slice(1);
+    computerChoiceSpan.textContent = computer.charAt(0).toUpperCase() + computer.slice(1);
+}
+
+function determineWinner(player, computer) {
+    if (player === computer) {
+        return "It's a tie!";
+    }
+    if (
+        (player === 'rock' && computer === 'scissors') ||
+        (player === 'scissors' && computer === 'paper') ||
+        (player === 'paper' && computer === 'rock')
+    ) {
+        return 'You win!';
+    }
+    return 'Computer wins!';
+}
+
+function displayResult(winner) {
+    resultText.textContent = winner;
+    if (winner === 'You win!') {
+        resultText.style.color = '#27ae60'; // Green
+    } else if (winner === 'Computer wins!') {
+        resultText.style.color = '#e74c3c'; // Red
+    } else {
+        resultText.style.color = '#f1c40f'; // Yellow
+    }
+}
+                        </code></pre>
+                    </div>
+                </details>
+            </li>
+
+        </ol>
+
+        <footer class="text-center mt-12 mb-6">
+            <p class="text-sm text-slate-500">&copy; 2024 HTML Project Showcase. Happy Coding!</p>
+        </footer>
+    </div>
+</body>
+</html>

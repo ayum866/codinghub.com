@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Simple JavaScript Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .example-section {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .output {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>10 Simple JavaScript Examples</h1>
+
+    <div class="example-section">
+        <h2>1. Hello World (Console Log)</h2>
+        <p>Open your browser's developer console (F12 or right-click -> Inspect, then go to the Console tab) to see the output.</p>
+        <pre><code>console.log("Hello, World!");</code></pre>
+        <button onclick="example1()">Run Example 1</button>
+        <div class="output" id="output1"></div>
+    </div>
+
+    <div class="example-section">
+        <h2>2. Changing HTML Content</h2>
+        <p id="changeText">This text will change when the button is clicked.</p>
+        <pre><code>document.getElementById("changeText").innerHTML = "Text has been changed by JavaScript!";</code></pre>
+        <button onclick="example2()">Run Example 2</button>
+        <div class="output" id="output2"></div>
+    </div>
+
+    <div class="example-section">
+        <h2>3. Simple Alert Box</h2>
+        <p>Click the button to see a simple alert message.</p>
+        <pre><code>alert("This is a simple alert!");</code></pre>
+        <button onclick="example3()">Run Example 3</button>
+        <div class="output" id="output3"></div>
+    </div>
+
+    <div class="example-section">
+        <h2>4. Basic Arithmetic</h2>
+        <p>Demonstrates adding two numbers.</p>
+        <pre><code>let a = 5;
+let b = 10;
+let sum = a + b;
+document.getElementById("output4").innerText = "The sum of 5 and 10 is: " + sum;</code></pre>
+        <button onclick="example4()">Run Example 4</button>
+        <div class="output" id="output4"></div>
+    </div>
+
+    <div class="example-section">
+        <h2>5. Function Definition and Call</h2>
+        <p>A function that returns a greeting.</p>
+        <pre><code>function greet(name) {
+    return "Hello, " + name + "!";
+}
+document.getElementById("output5").innerText = greet("Alice");</code></pre>
+        <button onclick="example5()">Run Example 5</button>
+        <div class="output" id="output5"></div>
+    </div>
+
+    <div class="example-section">
+        <h2>6. Conditional Statement (if-else)</h2>
+        <p>Checks if a number is even or odd.</p>
+        <pre><code>let num = 7;
+if (num % 2 === 0) {
+    document.getElementById("output6").innerText = num + " is an even number.";
+} else {
+    document.getElementById("output6").innerText = num + " is an odd number.";
+}</code></pre>
+        <button onclick="example6()">Run Example 6</button>
+        <div class="output" id="output6"></div>
+    </div>
+
+    <div class="example-section">
+        <h2>7. Loop (for loop)</h2>
+        <p>Counts from 1 to 5.</p>
+        <pre><code>let loopOutput = "Counting: ";
+for (let i = 1; i <= 5; i++) {
+    loopOutput += i + " ";
+}
+document.getElementById("output7").innerText = loopOutput;</code></pre>
+        <button onclick="example7()">Run Example 7</button>
+        <div class="output" id="output7"></div>
+    </div>
+
+    <div class="example-section">
+        <h2>8. Array and Accessing Elements</h2>
+        <p>Creates an array of fruits and displays the second one.</p>
+        <pre><code>let fruits = ["Apple", "Banana", "Cherry"];
+document.getElementById("output8").innerText = "My favorite fruit is: " + fruits[1]; // Banana</code></pre>
+        <button onclick="example8()">Run Example 8</button>
+        <div class="output" id="output8"></div>
+    </div>
+
+    <div class="example-section">
+        <h2>9. Event Listener</h2>
+        <p>Click the button below to see an output from an event listener.</p>
+        <button id="eventButton">Click Me (Event Listener)</button>
+        <pre><code>document.getElementById("eventButton").addEventListener("click", function() {
+    document.getElementById("output9").innerText = "Button clicked via event listener!";
+});</code></pre>
+        <div class="output" id="output9"></div>
+    </div>
+
+    <div class="example-section">
+        <h2>10. Date Object</h2>
+        <p>Displays the current date and time.</p>
+        <pre><code>let currentDate = new Date();
+document.getElementById("output10").innerText = "Current Date and Time: " + currentDate.toLocaleString();</code></pre>
+        <button onclick="example10()">Run Example 10</button>
+        <div class="output" id="output10"></div>
+    </div>
+
+    <script>
+        // JavaScript functions for each example
+        function example1() {
+            console.log("Hello, World!");
+            document.getElementById("output1").innerText = "Check console for output.";
+        }
+
+        function example2() {
+            document.getElementById("changeText").innerHTML = "Text has been changed by JavaScript!";
+            document.getElementById("output2").innerText = "Text above has been updated.";
+        }
+
+        function example3() {
+            // Using a custom modal for alert-like functionality as per instructions
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                padding: 20px;
+                border: 1px solid #ccc;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                border-radius: 8px;
+                z-index: 1000;
+                text-align: center;
+            `;
+            modal.innerHTML = `
+                <p>This is a simple alert!</p>
+                <button onclick="this.parentNode.remove()" style="margin-top: 15px; background-color: #007bff; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">OK</button>
+            `;
+            document.body.appendChild(modal);
+            document.getElementById("output3").innerText = "Custom alert box displayed.";
+        }
+
+        function example4() {
+            let a = 5;
+            let b = 10;
+            let sum = a + b;
+            document.getElementById("output4").innerText = "The sum of 5 and 10 is: " + sum;
+        }
+
+        function example5() {
+            function greet(name) {
+                return "Hello, " + name + "!";
+            }
+            document.getElementById("output5").innerText = greet("Alice");
+        }
+
+        function example6() {
+            let num = 7;
+            if (num % 2 === 0) {
+                document.getElementById("output6").innerText = num + " is an even number.";
+            } else {
+                document.getElementById("output6").innerText = num + " is an odd number.";
+            }
+        }
+
+        function example7() {
+            let loopOutput = "Counting: ";
+            for (let i = 1; i <= 5; i++) {
+                loopOutput += i + " ";
+            }
+            document.getElementById("output7").innerText = loopOutput;
+        }
+
+        function example8() {
+            let fruits = ["Apple", "Banana", "Cherry"];
+            document.getElementById("output8").innerText = "My favorite fruit is: " + fruits[1]; // Banana
+        }
+
+        // Example 9 uses an event listener directly, so no separate function for the button's onclick
+        document.getElementById("eventButton").addEventListener("click", function() {
+            document.getElementById("output9").innerText = "Button clicked via event listener!";
+        });
+
+
+        function example10() {
+            let currentDate = new Date();
+            document.getElementById("output10").innerText = "Current Date and Time: " + currentDate.toLocaleString();
+        }
+
+    </script>
+
+</body>
+</html>

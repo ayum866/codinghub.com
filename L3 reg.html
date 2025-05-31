@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <STYLE>
+      body{
+        background-color: black;
+    }
+      h1{
+      color: blue;
+      animation: reg 1s infinite alternate;
+      text-align: center;
+    }
+    @keyframes reg{
+        0%{color: blue;}
+        50%{color: red;}
+        100%{color: blue;}
+        
+    }
+    .reg{
+        margin: auto;
+         height: 500px;
+         width: 500px;
+         border: 2px solid blue;
+         border-radius:20% ;
+         animation: rad  1s infinite alternate;
+         box-shadow:2px 2px 2px 8px (rgba(229, 10, 10)) ;
+    }
+    @keyframes rad{
+        0%{ border: 2px solid red;box-shadow:2px 2px 2px 8px rgba(229, 10, 10) ;}
+        50%{ border: 2px solid rgb(0, 0, 255); box-shadow:2px 2px 2px 8px rgba(0, 0, 255) ;} 
+        100%{ border: 2px solid red;box-shadow:2px 2px 2px 8px rgba(229, 10, 10) ;}
+    }
+   input{
+    background-color: black;
+    color: red;
+    border: 5px solid blue;
+    height: 35px;
+    width: 350px;
+    border-radius: 10px;
+    font-weight: bold;
+   }
+   input:focus{
+        color:blue;
+    border: 5px solid red;
+   }
+   fieldset{
+    height:450px ;
+    width: 350px;
+    border: 1px solid transparent;
+    margin: auto;
+   }
+   legend{
+    color: red;
+   } 
+   button{
+    height: 40px;
+    width: 370px;
+    background-color: blue;
+    color: red;
+    border: 5px solid red;
+    border-radius: 20%;
+    font-weight: bold;
+   }
+     button:hover{
+    height: 40px;
+    width: 370px;
+    background-color: red;
+    color: blue;
+    border: 5px solid blue;
+    border-radius: 20%;
+   } 
+   #h4{
+    height: 40px;
+    width: 370px;
+    background-color: blue;
+    color: red;
+    border: 5px solid red;
+    border-radius: 20%;
+    font-weight: bold;
+    display: block;
+    margin: auto;
+   }
+    #h4:hover{
+    height: 40px;
+    width: 370px;
+    background-color: red;
+    color: blue;
+    border: 5px solid blue;
+    border-radius: 20%;
+}
+.reg2{
+    margin: auto;
+    height: 50px;
+    width: 370px;
+}
+p{
+            color:red;
+            animation: lp 2s infinite alternate;
+        }
+        @keyframes lp{
+            0%{color: red;}
+            10%{color: orangered;}
+            20%{color:orange;}
+            30%{color:yellow;}
+            40%{color:lawngreen;}
+            50%{color:lightgreen;}
+            60%{color:darkgreen;}
+            70%{color:skyblue;}
+            80%{color:blue;}
+            90%{color:purple;}
+            100%{color:rgb(153, 37, 56);}
+        }
+    </STYLE>
+</head>
+<body>
+     <p id="clock"></p>
+
+<script>
+  setInterval(() => {
+    const now = new Date();
+    document.getElementById("clock").textContent = now.toLocaleTimeString();
+  }, 1000);
+</script>
+
+    <div class="reg">
+        <h1>REGISTER NOW</h1>
+        <br><br>
+        <fieldset>
+        <legend>*USERNAME</legend>
+  <input type="text" id="3"   placeholder="jhon" required>
+  <br>
+  <br>
+  <br>
+  <legend>*CREATE PASSWORD</legend>
+  <input type="text" id="1" placeholder="Exp123#" required>  
+  <BR><BR><br>
+    <legend>*CONFIRM PASSWORD</legend>
+  <input type="text"  id="2"   placeholder="Exp123#" required> 
+  <BR><br><br>
+  <button onclick="abcd()">REGISTER </button>
+  </fieldset>
+  </div>
+  <br>
+  <div class="reg2">
+  <a href="L2.html"><button id="h4" style="display: none;">LOGIN</button></a>
+</div>
+  <script>
+    function abcd(){
+    const a = document.getElementById("1").value;
+     const b = document.getElementById("2").value;
+      const c = document.getElementById("3").value;
+
+    if(a!=b){
+        alert("RE-ENTER PASSWORD")
+    }
+    else if(a==""){
+    alert("ALL FIELDS ARE REQUIRED")
+    }
+        else if(b==""){
+    alert("ALL FIELDS ARE REQUIRED")
+    }
+        else if(c==""){
+    alert("ALL FIELDS ARE REQUIRED")
+    }
+    else{
+    alert("REGISTERED SUCCESSFULLY !!!!!")
+    }
+
+  document.getElementById('h4').style.display = 'inline-block';
+}
+  </script>
+</body>
+</html>
